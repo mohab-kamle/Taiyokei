@@ -145,6 +145,17 @@ public class GoalManager : MonoBehaviour
         set => m_OptionsButton = value;
     }
 
+    [Tooltip("The Information Button to enable once the greeting prompt is dismissed.")]
+    [SerializeField]
+    GameObject m_InfoButton;
+    /// <summary>
+    /// The Information Button to enable once the greeting prompt is dismissed.
+    /// </summary>
+    public GameObject infoButton
+    {
+        get => m_InfoButton;
+        set => m_InfoButton = value;
+    }
     [Tooltip("The Create Button to enable once the greeting prompt is dismissed.")]
     [SerializeField]
     GameObject m_CreateButton;
@@ -306,6 +317,7 @@ public class GoalManager : MonoBehaviour
 
         m_GreetingPrompt.SetActive(false);
         m_OptionsButton.SetActive(true);
+        m_InfoButton.SetActive(true);
         m_CreateButton.SetActive(true);
         m_MenuManager.enabled = true;
 

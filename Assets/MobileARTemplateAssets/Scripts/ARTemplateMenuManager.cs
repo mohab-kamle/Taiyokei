@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs.Readers;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets;
 using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
+using TMPro; // Add this for TextMeshPro support
 
 /// <summary>
 /// Handles dismissing the object menu when clicking out the UI bounds, and showing the
@@ -15,6 +16,43 @@ using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 /// </summary>
 public class ARTemplateMenuManager : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("The button component for the info button.")]
+    Button m_InfoButton;
+
+    /// <summary>
+    /// The button component for the info button.
+    /// </summary>
+    public Button infoButton
+    {
+        get => m_InfoButton;
+        set => m_InfoButton = value;
+    }
+
+    [SerializeField]
+    [Tooltip("The tooltip text to display when the info button is hovered.")]
+    string m_TooltipText;
+
+    /// <summary>
+    /// The tooltip text to display when the info button is hovered.
+    /// </summary>
+    public string tooltipText
+    {
+        get => m_TooltipText;
+        set => m_TooltipText = value;
+    }
+    [SerializeField]
+    [Tooltip("The modal with the object information.")]
+    GameObject m_InfoModal;
+    /// <summary>
+    /// The modal with the object information.
+    /// </summary>
+    public GameObject infoModal
+    {
+        get => m_InfoModal;
+        set => m_InfoModal = value;
+    }
+
     [SerializeField]
     [Tooltip("Button that opens the create menu.")]
     Button m_CreateButton;
@@ -210,6 +248,32 @@ public class ARTemplateMenuManager : MonoBehaviour
         set => XRInputReaderUtility.SetInputProperty(ref m_DragCurrentPositionInput, value, this);
     }
 
+    [SerializeField]
+    [Tooltip("The TextMeshProUGUI component to display the text.")]
+    private TextMeshProUGUI m_DeleteButtonText;
+
+    /// <summary>
+    /// The TextMeshProUGUI component to display the text.
+    /// </summary>
+    public TextMeshProUGUI deleteButtonText
+    {
+        get => m_DeleteButtonText;
+        set => m_DeleteButtonText = value;
+    }
+
+    [SerializeField]
+    [Tooltip("The input text to display when the delete button appears.")]
+    private string m_DeleteButtonInputText;
+
+    /// <summary>
+    /// The input text to display when the delete button appears.
+    /// </summary>
+    public string deleteButtonInputText
+    {
+        get => m_DeleteButtonInputText;
+        set => m_DeleteButtonInputText = value;
+    }
+
     bool m_IsPointerOverUI;
     bool m_ShowObjectMenu;
     bool m_ShowOptionsModal;
@@ -284,7 +348,21 @@ public class ARTemplateMenuManager : MonoBehaviour
             }
             else
             {
-                m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
+                bool isFocused = m_InteractionGroup?.focusInteractable != null;
+                m_DeleteButton.gameObject.SetActive(isFocused);
+
+                // Update the TextMeshProUGUI text when the delete button appears
+                if (isFocused && m_DeleteButtonText != null)
+                {
+                    // Get the currently focused object
+                    var focusedObject = m_InteractionGroup.focusInteractable?.transform.gameObject;
+
+                    if (focusedObject != null && focusedObject.TryGetComponent<SpawnedObjectInfo>(out var objectInfo))
+                    {
+                        // Update the TextMeshProUGUI with the description from the focused object
+                        m_DeleteButtonText.text = objectInfo.Description;
+                    }
+                }
             }
 
             m_IsPointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(-1);
@@ -292,8 +370,23 @@ public class ARTemplateMenuManager : MonoBehaviour
         else
         {
             m_IsPointerOverUI = false;
+            bool isFocused = m_InteractionGroup?.focusInteractable != null;
+            m_DeleteButton.gameObject.SetActive(isFocused);
+
+            // Update the TextMeshProUGUI text when the delete button appears
+            if (isFocused && m_DeleteButtonText != null)
+            {
+                // Get the currently focused object
+                var focusedObject = m_InteractionGroup.focusInteractable?.transform.gameObject;
+
+                if (focusedObject != null && focusedObject.TryGetComponent<SpawnedObjectInfo>(out var objectInfo))
+                {
+                    // Update the TextMeshProUGUI with the description from the focused object
+                    m_DeleteButtonText.text = objectInfo.Description;
+                }
+            }
+
             m_CreateButton.gameObject.SetActive(true);
-            m_DeleteButton.gameObject.SetActive(m_InteractionGroup?.focusInteractable != null);
         }
 
         if (!m_IsPointerOverUI && m_ShowOptionsModal)
@@ -338,7 +431,20 @@ public class ARTemplateMenuManager : MonoBehaviour
         }
         AdjustARDebugMenuPosition();
     }
-
+    /// <summary>
+    /// Shows or hides the info modal when the info button is clicked.
+    /// </summary>
+    public void ShowHideInfoModal()
+    {
+        if (m_InfoModal.activeSelf)
+        {
+            m_InfoModal.SetActive(false);
+        }
+        else
+        {
+            m_InfoModal.SetActive(true);
+        }
+    }
     /// <summary>
     /// Shows or hides the menu modal when the options button is clicked.
     /// </summary>

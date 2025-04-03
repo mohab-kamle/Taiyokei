@@ -6,6 +6,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 {
     /// <summary>
     /// Behavior with an API for spawning objects from a given set of prefabs.
+    /// The spawned object will face a given camera, and can be rotated randomly about the y-axis.
     /// </summary>
     public class ObjectSpawner : MonoBehaviour
     {
@@ -38,6 +39,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             get => m_ObjectPrefabs;
             set => m_ObjectPrefabs = value;
         }
+
+        [SerializeField]
+        [Tooltip("The descriptions for each object prefab. The index must match the prefab list.")]
+        private List<string> m_ObjectDescriptions;
 
         [SerializeField]
         [Tooltip("Optional prefab to spawn for each spawned object. Use a prefab with the Destroy Self component to make " +
@@ -232,6 +237,20 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
 
             objectSpawned?.Invoke(newObject);
             return true;
+        }
+
+        /// <summary>
+        /// Spawns an object at the given position and assigns its description.
+        /// </summary>
+        /// <param name="position">The world space position at which to spawn the object.</param>
+        public void SpawnObject(Vector3 position)
+        {
+            int index = Random.Range(0, m_ObjectPrefabs.Count);
+            GameObject spawnedObject = Instantiate(m_ObjectPrefabs[index], position, Quaternion.identity);
+
+            // Assign the description to the spawned object
+            var objectInfo = spawnedObject.AddComponent<SpawnedObjectInfo>();
+            objectInfo.Description = m_ObjectDescriptions[index];
         }
     }
 }
