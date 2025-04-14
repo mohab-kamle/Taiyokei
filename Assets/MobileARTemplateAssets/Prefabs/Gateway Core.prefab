@@ -5785,10 +5785,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4b05b5fa68e3045824e0d0b4124c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Description: "NASA\u2019s **Lunar Gateway** is a space station orbiting the Moon
-    to support Artemis missions. It includes key components like the **Power and
-    Propulsion Element (PPE)** for operations. The **Core Flight System (cFS)** software
-    ensures system health and navigation."
+  m_Description: The Gateway Core is a central structure in deep space exploration,
+    often imagined as a hub connecting missions between planets or systems. It symbolizes
+    innovation and strategic positioning, supporting spacecraft refueling, research,
+    and coordination in interplanetary travel scenarios and simulations.
+  m_ObjectClip: {fileID: 8300000, guid: cefccd16ea70e154bbc22481d5abe861, type: 3}
 --- !u!4 &7657548977611231358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7109682686697656316, guid: 5642b79498b10465fa9219ba4682355b,

@@ -16,6 +16,11 @@ using TMPro; // Add this for TextMeshPro support
 /// </summary>
 public class ARTemplateMenuManager : MonoBehaviour
 {
+    private AudioClip previousClip;
+
+    
+
+
     [SerializeField]
     [Tooltip("The button component for the info button.")]
     Button m_InfoButton;
@@ -356,12 +361,14 @@ public class ARTemplateMenuManager : MonoBehaviour
                 {
                     // Get the currently focused object
                     var focusedObject = m_InteractionGroup.focusInteractable?.transform.gameObject;
+                    focusedObject.TryGetComponent<SpawnedObjectInfo>(out var objectInfo);
 
-                    if (focusedObject != null && focusedObject.TryGetComponent<SpawnedObjectInfo>(out var objectInfo))
+                    if (focusedObject != null && objectInfo != null)
                     {
                         // Update the TextMeshProUGUI with the description from the focused object
                         m_DeleteButtonText.text = objectInfo.Description;
                     }
+                    
                 }
             }
 
@@ -383,6 +390,27 @@ public class ARTemplateMenuManager : MonoBehaviour
                 {
                     // Update the TextMeshProUGUI with the description from the focused object
                     m_DeleteButtonText.text = objectInfo.Description;
+                    ObjectAudioManager manager = Object.FindFirstObjectByType<ObjectAudioManager>();
+                        if(manager == null)
+                        {
+                            Debug.LogWarning("No ObjectAudioManager found in the scene.");
+                        }
+                        if(objectInfo.ObjectClip == null)
+                        {
+                            Debug.Log("gotcha!!");
+                        }
+                    
+                        if (manager != null && objectInfo.ObjectClip != null)
+                        {
+                            if (objectInfo.ObjectClip != previousClip)
+    {
+        manager.SetNewClip(objectInfo.ObjectClip);
+        previousClip = objectInfo.ObjectClip;
+    }
+                        }else
+                        {
+                            Debug.LogWarning("No audio clip assigned to the ObjectAudioManager.");
+                        }
                 }
             }
 

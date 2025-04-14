@@ -6405,11 +6405,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4b05b5fa68e3045824e0d0b4124c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Description: The **Mars Rover** is a robotic vehicle designed to explore the
-    surface of Mars. NASA's rovers, like **Curiosity** and **Perseverance**, are
-    equipped with cameras, drills, and scientific instruments. They send valuable
-    data back to Earth, helping scientists understand Mars' geology and potential
-    for life.
+  m_Description: Mars rovers are robotic vehicles sent to explore the Martian surface.
+    They study the terrain, analyze soil and rocks, and search for signs of water
+    or life. Rovers like Curiosity and Perseverance help scientists learn more about
+    Mars' climate, geology, and potential for habitability.
+  m_ObjectClip: {fileID: 8300000, guid: 93f10debdc1fb6944b64eb70eee42060, type: 3}
 --- !u!4 &7657548977611231358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7109682686697656316, guid: 5642b79498b10465fa9219ba4682355b,

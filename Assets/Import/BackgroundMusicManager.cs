@@ -1,13 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BackgroundMusicManager : MonoBehaviour
 {
     private static BackgroundMusicManager instance;
     private AudioSource audioSource;
 
+    public Slider volumeSlider; // 🎚️ Add this in the Inspector!
+
     void Awake()
     {
-        // Ensure only one instance of the background music exists
+        // Singleton pattern
         if (instance == null)
         {
             instance = this;
@@ -19,15 +22,32 @@ public class BackgroundMusicManager : MonoBehaviour
             return;
         }
 
-        // Get or add an AudioSource component
+        // Setup AudioSource
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
-            audioSource = gameObject.AddComponent<AudioSource>(); // Adds missing AudioSource
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        audioSource.loop = true; // Enable looping
-        audioSource.playOnAwake = true; // Ensure it starts playing
+        audioSource.loop = true;
+        audioSource.playOnAwake = true;
         audioSource.Play();
     }
+
+    void Start()
+    {
+        // Connect the volume slider if it's set
+        if (volumeSlider != null)
+        {
+            volumeSlider.onValueChanged.AddListener(SetVolume);
+            SetVolume(volumeSlider.value); // Set initial volume
+        }
+    }
+
+    public void SetVolume(float value)
+    {
+        if (audioSource != null)
+            audioSource.volume = value;
+    }
 }
+// 🎵 Attach this script to an empty GameObject in your scene and assign an AudioClip to the AudioSource component.

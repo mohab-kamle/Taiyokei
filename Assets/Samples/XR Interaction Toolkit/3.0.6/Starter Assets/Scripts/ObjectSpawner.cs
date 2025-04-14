@@ -41,10 +41,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
         }
 
         [SerializeField]
-        [Tooltip("The descriptions for each object prefab. The index must match the prefab list.")]
-        private List<string> m_ObjectDescriptions;
-
-        [SerializeField]
         [Tooltip("Optional prefab to spawn for each spawned object. Use a prefab with the Destroy Self component to make " +
             "sure the visualization only lives temporarily.")]
         GameObject m_SpawnVisualizationPrefab;
@@ -248,9 +244,6 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets
             int index = Random.Range(0, m_ObjectPrefabs.Count);
             GameObject spawnedObject = Instantiate(m_ObjectPrefabs[index], position, Quaternion.identity);
 
-            // Assign the description to the spawned object
-            var objectInfo = spawnedObject.AddComponent<SpawnedObjectInfo>();
-            objectInfo.Description = m_ObjectDescriptions[index];
         }
     }
 }

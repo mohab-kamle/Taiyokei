@@ -1091,10 +1091,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4b05b5fa68e3045824e0d0b4124c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Description: Earth is the only known planet to support life, with **71%** of
-    its surface covered in water. It rotates at **1,670 km/h** and orbits the Sun
-    at **107,000 km/h**. Earth's **magnetic field** shields it from solar radiation,
-    while **plate tectonics** reshape its surface.
+  m_Description: "Earth is the only known planet to support life. It has vast oceans,
+    diverse ecosystems, and a protective atmosphere. Earth orbits the Sun and experiences
+    seasons due to its tilt. It\u2019s studied through satellites, helping us monitor
+    climate change, natural disasters, and environmental shifts."
+  m_ObjectClip: {fileID: 8300000, guid: 186de3a5145945c4987f0dc26180d51b, type: 3}
 --- !u!4 &7657548977611231358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7109682686697656316, guid: 5642b79498b10465fa9219ba4682355b,

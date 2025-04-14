@@ -12154,10 +12154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4b05b5fa68e3045824e0d0b4124c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Description: "The **Apollo Lunar Module (LM)** was NASA\u2019s spacecraft for
-    Moon landings, designed only for space travel. It had **two stages**: descent
-    for landing and ascent for returning to orbit. The last LM, **\"Challenger\"**,
-    landed with **Apollo 17 in 1972**."
+  m_Description: 'The Apollo Lunar Module was used in NASA''s Apollo missions to
+    land astronauts on the Moon. It had two stages: one for descent and one for ascent.
+    It enabled humanity''s first steps on another world, marking a historic achievement
+    in engineering and space exploration.'
+  m_ObjectClip: {fileID: 8300000, guid: 4750fc17d3dd3d3449c468676fba70ec, type: 3}
 --- !u!4 &7657548977611231358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7109682686697656316, guid: 5642b79498b10465fa9219ba4682355b,

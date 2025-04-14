@@ -3416,10 +3416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4b05b5fa68e3045824e0d0b4124c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Description: The **Solar System** consists of the Sun and all objects bound to
-    it by gravity, including eight planets, moons, asteroids, and comets. Earth is
-    the third planet, and Jupiter is the largest. The system is over 4.5 billion
-    years old.
+  m_Description: The solar system consists of the Sun, planets, moons, asteroids,
+    and comets all bound by gravity. It provides a framework for studying celestial
+    motion and evolution. Exploring our solar system helps us understand Earth's
+    place in space and the potential for life elsewhere.
+  m_ObjectClip: {fileID: 8300000, guid: d220a8f6d1e31c048b3367e714e99951, type: 3}
 --- !u!4 &7657548977611231358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7109682686697656316, guid: 5642b79498b10465fa9219ba4682355b,

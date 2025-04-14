@@ -1425,9 +1425,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de4b05b5fa68e3045824e0d0b4124c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Description: A **Space Station** is a large spacecraft in low Earth orbit where
-    astronauts live and work. The **International Space Station (ISS)**, launched
-    in 1998, is a microgravity research lab for science and technology.
+  m_Description: The Space Station is a laboratory orbiting Earth where astronauts
+    conduct experiments in microgravity. It fosters international cooperation and
+    provides insights into space travel's effects on the human body. Research on
+    the station advances science, medicine, and technology that benefits life on
+    Earth and future missions.
+  m_ObjectClip: {fileID: 8300000, guid: 7b2dde53bc322f646ad4c6a524e931d0, type: 3}
 --- !u!4 &7657548977611231358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7109682686697656316, guid: 5642b79498b10465fa9219ba4682355b,

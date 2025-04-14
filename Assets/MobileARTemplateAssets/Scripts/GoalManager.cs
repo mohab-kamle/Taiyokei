@@ -156,6 +156,18 @@ public class GoalManager : MonoBehaviour
         get => m_InfoButton;
         set => m_InfoButton = value;
     }
+    [Tooltip("The audio play/pause button to enable once the greeting prompt is dismissed.")]
+    [SerializeField]
+    GameObject m_AudioPlayPauseButton;
+    /// <summary>
+    /// The audio play/pause button to enable once the greeting prompt is dismissed.
+    /// </summary>
+    /// <returns>The audio play/pause button.</returns>
+    public GameObject audioPlayPauseButton
+    {
+        get => m_AudioPlayPauseButton;
+        set => m_AudioPlayPauseButton = value;
+    }
     [Tooltip("The Create Button to enable once the greeting prompt is dismissed.")]
     [SerializeField]
     GameObject m_CreateButton;
@@ -319,6 +331,7 @@ public class GoalManager : MonoBehaviour
         m_OptionsButton.SetActive(true);
         m_InfoButton.SetActive(true);
         m_CreateButton.SetActive(true);
+        m_AudioPlayPauseButton.SetActive(true);
         m_MenuManager.enabled = true;
 
         for (int i = startingStep; i < m_StepList.Count; i++)
